@@ -1,24 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ThemeProvider, createTheme, StyledEngineProvider } from "@mui/material";
+
+import { TeamDataProvider } from "./context";
+
+import Layout from './components/Layout/Layout';
+import MainPage from './components/Pages/MainPage';
+import UsersPage from "./components/Pages/UsersPage";
+import SignUpPage from "./components/Pages/SignUpPage";
+import Page404 from "./components/Pages/404";
+
+import './App.scss';
+import UserPage from "./components/Pages/UserPage";
 
 function App() {
+
+  const theme = createTheme({
+    palette: {
+      error: {
+        main: '#CB3D40'
+      },
+    },
+    typography: {
+      fontFamily: [
+        'Nunito',
+        'sans-serif'
+      ].join(','),
+    },
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <StyledEngineProvider injectFirst>
+        <TeamDataProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path='/' element={<Layout />}>
+                <Route index element={<MainPage />}/>
+                <Route path='users' element={<UsersPage />}/>
+                <Route path='users/:id' element={<UserPage />}/>
+                <Route path='signup' element={<SignUpPage />}/>
+                <Route path='*' element={<Page404 />}/>
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </TeamDataProvider>
+      </StyledEngineProvider>
+    </ThemeProvider>
   );
 }
 

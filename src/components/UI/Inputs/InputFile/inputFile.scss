@@ -1,0 +1,46 @@
+
+@import '../../../../styles/variables.scss';
+
+.input-file-btn {
+    height: 54px;
+    min-width: auto;    
+    width: 83px;
+    border-radius: 4px 0 0 4px;
+    color: black;
+    text-transform: none;
+    font-size: 16px;
+    &__descr {
+        height: 54px;
+        padding: 14px 16px;
+        width:calc( 100% - 83px);
+        border-radius: 0 4px 4px 0;
+        border: 1px solid #D0CFCF;
+        color: #D0CFCF;
+        border-left: none;
+        cursor: pointer;
+        transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        &_error {
+            border: 2px solid $error;
+            border-left: none;
+        }
+        &.loaded {
+            color: black;
+        }
+    }
+}
+.input-file_wrapper {
+    position: relative;
+    margin-top: 47px;
+    display: flex;
+    align-items: center;
+}
+.error {
+    color: $error;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: left;
+    margin-top: 3px;
+    margin-right: 14px;
+    margin-bottom: 0;
+    margin-left: 14px;
+}

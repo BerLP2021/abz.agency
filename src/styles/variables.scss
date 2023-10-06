@@ -1,0 +1,26 @@
+$background: #f8f8f8;
+$header-background: #fff;
+$text-primary: #000;
+$btn-primary: #F4E041;
+$btn-hover: #FFE302;
+$secondary: #00BDD3;
+$btn-disabled: #B4B4B4;
+$error: #CB3D40;
+
+
+//text font-sizes
+$heading1: 40px;
+$heading1-lineheight: 40px;
+$body: 16px;
+$body-lineheight: 26px;
+
+$background-img: url('../assets/background/pexels-alexandr-podvalny-1227513.jpeg');
+
+:export {
+    textPrimary: $text-primary;
+    btnPrimary: $btn-primary;
+    btnHover: $btn-hover;
+    btnDisabled: $btn-disabled;
+    secondary: $secondary;
+    fontSizeMain: $body;
+}
