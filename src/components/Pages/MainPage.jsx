@@ -1,8 +1,8 @@
 import { Helmet } from 'react-helmet';
 
-import Promo from '../Promo/Promo';
-import TeamListSection from '../TeamListSection/TeamListSection';
-import SignUpSection from '../SignUpSection/SignUpSection';
+import Promo from '../Promo';
+import TeamListSection from '../TeamListSection';
+import SignUpSection from '../SignUpSection';
 
 const MainPage = () => {
   return (

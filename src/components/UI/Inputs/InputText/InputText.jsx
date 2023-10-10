@@ -18,7 +18,6 @@ const InputText = ({ rules, control, errors, inputName, label }) => {
             "& .MuiInputBase-input": {
               padding: "14px 16px",
               height: "54px",
-
               boxSizing: "border-box",
             },
             "& .MuiInputLabel-outlined": {
