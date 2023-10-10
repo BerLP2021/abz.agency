@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import TeamCard from '../TeamCard';
 import { ButtonFetch } from '../../UI/Buttons/Buttons';
 import Spinner from '../../UI/Spinner';
-import ErrorMsg from '../../UI/ErrorMsg/ErrorMsg';
+import ErrorMsg from '../../UI/ErrorMsg';
 import useUserService from '../../../services/userService';
 import { useDataTeamContext, useDataTeamDispatchContext } from '../../../context';
 
