@@ -1,11 +1,12 @@
 import { Snackbar, Alert } from "@mui/material";
+import { memo } from "react";
 
 const ToastBar = ({ message, setMessage }) => {
   const handleClose = (event, reason) => {
     if (reason === "clickaway") return;
     setMessage("");
   };
-
+  
   let serverValidationMessage;
 
   if (typeof message === "string") {
@@ -32,8 +33,7 @@ const ToastBar = ({ message, setMessage }) => {
       );
     }
   }
-  // if(!serverValidationMessage || !serverValidationMessage.length) return
   return <>{serverValidationMessage}</>;
 };
 
-export default ToastBar;
+export default memo(ToastBar);

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Stack } from "@mui/material";
+import Stack from "@mui/material/Stack";
 
 import useUserService from "../../services/userService";
 import Form from "./Form";
@@ -7,13 +7,20 @@ import Title from "../UI/Title";
 import ErrorBoundary from "../errorBoundary/ErrorBoundary";
 import Congrats from "./Congrats";
 
-const SignUp = ({ setSayCongrats }) => {
+export const SignUp = () => {
   const [positions, setPositions] = useState([]);
   const { getPositions, loading, error, clearError } = useUserService();
+  const [sayCongrats, setSayCongrats] = useState(false);
 
   const onLoadPositions = (positions) => {
     setPositions(positions);
   };
+
+  useEffect(() => {
+    if (sayCongrats) {
+      setTimeout(() => setSayCongrats(false), 3000);
+    }
+  }, [sayCongrats]);
 
   useEffect(() => {
     clearError();
@@ -24,47 +31,36 @@ const SignUp = ({ setSayCongrats }) => {
   }, []);
 
   return (
-    <Stack
-      direction="column"
-      justifyContent="center"
-      alignItems="center"
-      sx={{ gap: "50px" }}>
-      <Title
-        className="heading1 section-title"
-        text="Working with POST request"
-      />
-      <ErrorBoundary>
-        <Form
-          positions={positions}
-          loading={loading}
-          error={error}
-          setSayCongrats={setSayCongrats}
-        />
-      </ErrorBoundary>
-    </Stack>
+    <>
+      {sayCongrats ? <Congrats /> : (
+        <Stack
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          sx={{ gap: "50px" }}>
+          <Title text="Working with POST request" className="heading1" />
+          <ErrorBoundary>
+            <Form
+              positions={positions}
+              loading={loading}
+              error={error}
+              setSayCongrats={setSayCongrats}
+            />
+          </ErrorBoundary>
+        </Stack>
+      )}
+    </>
   );
 };
 
 const SignUpSection = () => {
-  const [sayCongrats, setSayCongrats] = useState(false);
-
-  useEffect(() => {
-    if (sayCongrats) {
-      setTimeout(() => setSayCongrats(false), 3000);
-    }
-  }, [sayCongrats]);
-
   return (
-    <section id="signup" className="form">
-      <div className="container">
-        {sayCongrats ? (
-          <Congrats />
-        ) : (
-          <SignUp setSayCongrats={setSayCongrats} />
-        )}
+    <section id="signup" className="signup">
+      <div className="container" style={{marginBlock: '140px 100px'}}>
+        <SignUp />
       </div>
     </section>
   );
 };
 
-export default SignUpSection;
+export default  SignUpSection;

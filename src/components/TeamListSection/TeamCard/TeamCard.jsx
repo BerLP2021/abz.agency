@@ -1,16 +1,21 @@
-import OverflowTip from '../../UI/OverflowTip/OverflowTip';
-import Avatar from '@mui/material/Avatar';
-
-import {ReactComponent as DefaultAvatarLogo} from '../../../assets/photo-cover.svg';
-// import defaultAvatarLogo from '../../../assets/photo-cover.png';
-
 import { Link } from 'react-router-dom';
+import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 
+import OverflowTip from '../../UI/OverflowTip/OverflowTip';
+import useMatchMedia from '../../../hooks/useMatchMedia';
+
+import {ReactComponent as DefaultAvatarLogo} from '../../../assets/photo-cover.svg';
 import './teamcard.scss';
 
 const TeamCard = ({name, id,  position, email, tel, imgSrc}) => {
-  console.log('TeamCard')
+
+  const {isMobile} = useMatchMedia();
+  
+  const phoneLink = isMobile ?
+                      <a href={`tel:${tel}`} className="card__phone">{tel}</a> :
+                      <div className="card__phone">{tel}</div>
+
   return (
     <li className='card'>
       <Box className="card__content">
@@ -20,18 +25,18 @@ const TeamCard = ({name, id,  position, email, tel, imgSrc}) => {
             src={imgSrc}
             sx={{ width: 70, height: 70 }}
           >
-            <DefaultAvatarLogo alt={name} style={{ width: 70, height: 70 }}/>
+            <DefaultAvatarLogo style={{ width: 70, height: 70 }}/>
           </Avatar>
         </Link>
         <Box className='card__name'>
-          <OverflowTip name={name} link={`/users/${id}`}/>
+          <OverflowTip name={name} link={`/users/${id}`} />
         </Box>
         <Box className="card__descr">
           <Box className="card__position">{position}</Box>
           <Box className="card__email">
-            <OverflowTip name={email} link={`mailto:${email}`}/>
+            <OverflowTip name={email} link={isMobile ? `mailto:${email}` : null}/>
           </Box>
-          <a href={`tel:${tel}`} className="card__phone">{tel}</a>
+          { phoneLink }
         </Box>
       </Box>
     </li>

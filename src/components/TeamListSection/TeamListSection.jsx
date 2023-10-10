@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import Stack from "@mui/material/Stack";
 
 import Title from "../UI/Title";
 import TeamList from "./TeamList";

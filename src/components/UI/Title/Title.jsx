@@ -1,4 +1,3 @@
-import React from 'react'
 import { StyledEngineProvider, Typography } from '@mui/material';
 import './title.scss';
 

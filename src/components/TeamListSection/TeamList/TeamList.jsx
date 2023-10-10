@@ -5,9 +5,9 @@ import { ButtonFetch } from '../../UI/Buttons/Buttons';
 import Spinner from '../../UI/Spinner';
 import ErrorMsg from '../../UI/ErrorMsg/ErrorMsg';
 import useUserService from '../../../services/userService';
+import { useDataTeamContext, useDataTeamDispatchContext } from '../../../context';
 
 import './teamList.scss';
-import { useDataTeamContext, useDataTeamDispatchContext } from '../../../context';
 
 
 const TeamList = () => {

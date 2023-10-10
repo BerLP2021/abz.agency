@@ -24,8 +24,6 @@ const useUserService = () => {
   const postUser = async (formData, token) => {
     return await request(_apiBase + "/users", "POST", formData, {
       'Token': token,
-      // Token:
-        // "eyJpdiI6IlRXUUdcLzBzdDVcL2Q5YTFYTzZJVHhUUT09IiwidmFsdWUiOiJFazVpemQ5WnlURlhRWkc3THc4cmZKVG5cL2E4XC9JVCtRaXNlMW00TExTU3FuWkJEWG1KVGQ1d1JiK25NSVZZaUJUY3crN2xET0tZNkpMR0VZcGlLOHpBPT0iLCJtYWMiOiJlZDE2NmVhNGJiNWE5MTdjMjgwYTEyODdmNzRlNDNkODRiY2E4M2Q3ZjM4YjQ4YWFkYmYyMmM2YWRlMTkyODNiIn0=",
     });
   };
 

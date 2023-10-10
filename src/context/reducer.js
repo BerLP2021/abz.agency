@@ -6,7 +6,8 @@ const teamReducer = (state, action) => {
               ...action.teamData, 
               users: [...state.teamData.users, ...action.teamData.users]
             },
-            remoteUpdate: state.remoteUpdate
+            remoteUpdate: state.remoteUpdate,
+            userName: state.userName
           };
         
         case 'update': 
@@ -15,7 +16,8 @@ const teamReducer = (state, action) => {
             teamData: {
               ...action.teamData
             },
-            remoteUpdate: state.remoteUpdate
+            remoteUpdate: state.remoteUpdate,
+            userName: state.userName
           };
         
         case 'remote': 
@@ -23,7 +25,11 @@ const teamReducer = (state, action) => {
             ...state,
             remoteUpdate: state.remoteUpdate + 1
           }
-        
+        case 'select': 
+          return {
+            ...state,
+            userName: action.userName
+          }
         default: 
           throw Error('Unknown action: ' + action.type);
         
